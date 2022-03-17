@@ -12,18 +12,10 @@ class PostController extends Controller
         return view('blog', [
             "title" => "Posts",
             // "posts" => Post::all(),
-<<<<<<< HEAD
-<<<<<<< HEAD
             "posts" => Post::with([
                 'category',
                 'author',
             ])->latest()->get(),
-=======
-            "posts" => Post::latest()->get(),
->>>>>>> 178970435b1bac7323e867e03ac941084553d809
-=======
-            "posts" => Post::latest()->get(),
->>>>>>> 178970435b1bac7323e867e03ac941084553d809
         ]);
     }
 

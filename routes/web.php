@@ -47,42 +47,15 @@ Route::get('/categories', function () {
 });
 
 Route::get('/categories/{category:slug}', function  (Category $category) {
-<<<<<<< HEAD
-<<<<<<< HEAD
     return view('blog', [
         'title' => "Post Category : " . $category->name,
         'posts' => $category->posts->load('category', 'author'),
-=======
-=======
->>>>>>> 178970435b1bac7323e867e03ac941084553d809
-    return view('category', [
-        'title' => $category->name,
-        'posts' => $category->posts,
-        'category' => $category->name,
-<<<<<<< HEAD
->>>>>>> 178970435b1bac7323e867e03ac941084553d809
-=======
->>>>>>> 178970435b1bac7323e867e03ac941084553d809
     ]);
 });
 
 Route::get('/authors/{author:username}', function  (User $author) {
     return view('blog', [
-<<<<<<< HEAD
-<<<<<<< HEAD
         'title' => "Post By " . $author->name,
         'posts' => $author->posts->load('category', 'author'),
     ]);
 });
-=======
-        'title' => "Post by " . $author->name,
-        'posts' => $author->posts,
-    ]);
-});
->>>>>>> 178970435b1bac7323e867e03ac941084553d809
-=======
-        'title' => "Post by " . $author->name,
-        'posts' => $author->posts,
-    ]);
-});
->>>>>>> 178970435b1bac7323e867e03ac941084553d809

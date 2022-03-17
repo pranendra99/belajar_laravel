@@ -1,16 +1,8 @@
 @extends('layouts.main')
 
 @section('content')
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <h1 class="mb-5">{{ $title }}</h1>
 
-=======
-    
->>>>>>> 178970435b1bac7323e867e03ac941084553d809
-=======
-    
->>>>>>> 178970435b1bac7323e867e03ac941084553d809
+    <h1 class="mb-5">{{ $title }}</h1>
     @foreach ($posts as $post)
     <article class="mb-5 border-bottom pb-5">
         <h2><a href="/posts/{{ $post->slug }}" class="text-decoration-none">{{ $post->title }}</a></h2>
