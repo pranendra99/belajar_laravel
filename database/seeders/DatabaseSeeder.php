@@ -28,12 +28,22 @@ class DatabaseSeeder extends Seeder
             'slug' => 'programming',
         ]);
 
+        // Category::create([
+        //     'name' => 'Laravel',
+        //     'slug' => 'laravel',
+        // ]);
+
         Category::create([
-            'name' => 'Laravel',
-            'slug' => 'laravel',
+            'name' => 'Web Design',
+            'slug' => 'web-design',
         ]);
 
-        Post::factory(20)->create();
+        Category::create([
+            'name' => 'Android Development',
+            'slug' => 'android-development',
+        ]);
+
+        Post::factory(30)->create();
 
         // Post::create([
         //     'category_id' => 1,
