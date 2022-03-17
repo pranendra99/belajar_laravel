@@ -14,7 +14,7 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            'category_id' => mt_rand(1, 2),
+            'category_id' => mt_rand(1, 3),
             'user_id' => mt_rand(1, 3),
             'title' => $this->faker->sentence(mt_rand(2, 8)),
             'slug' => $this->faker->slug(),

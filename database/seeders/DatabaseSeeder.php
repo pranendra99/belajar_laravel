@@ -43,7 +43,7 @@ class DatabaseSeeder extends Seeder
             'slug' => 'android-development',
         ]);
 
-        Post::factory(30)->create();
+        Post::factory(20)->create();
 
         // Post::create([
         //     'category_id' => 1,
