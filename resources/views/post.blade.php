@@ -8,7 +8,7 @@
                 <h1 class="mb-3">{{ $posts->title }}</h1>
 
                 <small class="text-muted">
-                    <p>By <a href="/authors/{{ $posts->author->username }}" class="text-decoration-none">{{ $posts->author->name }}</a> in <a href="/categories/{{ $posts->category->slug}}" class="text-decoration-none">{{ $posts->category->name }} </a>{{ $posts->created_at->diffForHumans() }}</p>
+                    <p>By <a href="/posts?author={{ $posts->author->username }}" class="text-decoration-none">{{ $posts->author->name }}</a> in <a href="/posts?category={{ $posts->category->slug}}" class="text-decoration-none">{{ $posts->category->name }} </a>{{ $posts->created_at->diffForHumans() }}</p>
                 </small>
 
                 <img src="https://source.unsplash.com/1200x400?{{ $posts->category->name }}" class="card-img-top" alt="{{ $posts->title }}" class="img-fluid">
