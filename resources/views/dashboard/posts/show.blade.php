@@ -14,7 +14,7 @@
                     <button type="submit" class="btn btn-danger mx-1"><i class="fa fa-trash"></i> Hapus</button>
                 </form>
 
-                <img src="https://source.unsplash.com/1200x400?{{ $posts->category->name }}" class="card-img-top my-3" alt="{{ $posts->title }}" class="img-fluid">
+                <img src="https://source.unsplash.com/1200x400?{{ $posts->category->name }}" class="card-img-top mt-4" alt="{{ $posts->title }}" class="img-fluid">
                 {{-- <h5>{{$posts["author"]}}</h5> --}}
                 <article class="my-3 fs-6">
                     {!! $posts->body !!}

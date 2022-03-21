@@ -74,7 +74,7 @@
           </div>
         </div><!-- /.container-fluid -->
       </section>
-    @elseif(Request::is('dashboard/posts/'. $posts->slug))
+    @else
       {{-- Kosong --}}
     @endif
 

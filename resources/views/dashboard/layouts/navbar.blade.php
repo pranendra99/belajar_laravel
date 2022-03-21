@@ -15,12 +15,12 @@
           Welcome, {{ Auth::user()->name }}!
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-          <a class="dropdown-item" href="/dashboard">Dashboard</a>
+          <a class="dropdown-item" href="/dashboard"><i class="fas fa-home"></i> Dashboard</a>
           <div class="dropdown-divider"></div>
           <form action="/logout" method="POST">
             @csrf
-            <button class="dropdown-item" type="submit"><i class="bi bi-box-arrow-right"></i> Logout</button>
-        </form>
+            <button class="dropdown-item" type="submit"><i class="far fa-arrow-alt-circle-left"></i> Logout</button>
+          </form>
         </div>
       </li>
     </ul>
@@ -30,7 +30,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="/" class="brand-link">
       <img src="/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Evan Blog</span>
     </a>
