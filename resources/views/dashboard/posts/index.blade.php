@@ -4,9 +4,12 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                {{-- <div class="card-header">
-                  <h3 class="card-title">DataTable with minimal features & hover style</h3>
-                </div> --}}
+                <div class="card-header">
+                    <a href="/dashboard/posts/create" class="btn btn-primary">
+                        <i class="fa fa-plus"></i>
+                        <span>Add new post</span>
+                    </a>
+                </div>
                 <!-- /.card-header -->
                 <div class="card-body">
                   <table id="example2" class="table table-bordered table-hover">
