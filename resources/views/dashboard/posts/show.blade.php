@@ -14,7 +14,7 @@
                     <form action="/dashboard/posts/{{ $posts->slug }}" method="POST" class="d-inline">
                         @csrf
                         @method('delete')
-                        <button type="submit" class="btn btn-danger mx-1"><i class="fa fa-trash"></i> Hapus</button>
+                        <button type="submit" class="btn btn-danger mx-1" onclick="return confirm('Yakin ingin menghapus data ini?')"><i class="fa fa-trash"></i> Hapus</button>
                     </form>
                     
                     <img src="https://source.unsplash.com/1200x400?{{ $posts->category->name }}" class="card-img-top mt-4" alt="{{ $posts->title }}" class="img-fluid">

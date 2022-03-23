@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header">
                   @if (session()->has('success'))
-                    <div class="alert alert-success alert-dismissible col-md-6">
+                    <div class="alert alert-success alert-dismissible">
                       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                         {{ session('success') }}
                     </div>
@@ -37,11 +37,11 @@
                         {{-- show --}}
                         <a href="/dashboard/posts/{{ $post->slug }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
                         {{-- edit --}}
-                        <a href="/dashboard/posts/{{ $post->id }}/edit" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                        <form action="/dashboard/posts/{{ $post->id }}" method="POST" class="d-inline">
+                        <a href="/dashboard/posts/{{ $post->slug }}/edit" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                        <form action="/dashboard/posts/{{ $post->slug }}" method="POST" class="d-inline">
                             @csrf
                             @method('delete')
-                            <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus data ini?')"><i class="fa fa-trash"></i></button>
                         </form>
                     </td>
                     </tr>

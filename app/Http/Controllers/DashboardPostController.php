@@ -86,9 +86,14 @@ class DashboardPostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit(Post $post)
     {
-        //
+        return view('dashboard.posts.edit', [
+            "title" => "Edit Post",
+            "active" => "posts",
+            "post" => $post,
+            "categories" => Category::all(),
+        ]);
     }
 
     /**
@@ -98,9 +103,26 @@ class DashboardPostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, Post $post)
     {
-        //
+        $rules = [
+            'title' => 'required|max:255',
+            'category_id' => 'required',
+            'body' => 'required',
+        ];
+
+        if($request->slug != $post->slug) {
+            $rules['slug'] = 'required|unique:posts';
+        }
+        
+        $validasi = $request->validate($rules);
+
+        $validasi['user_id'] = auth()->user()->id;
+        $validasi['excerpt'] = Str::limit(strip_tags($request->body), 100);
+
+        Post::where('id', $post->id)->update($validasi);
+        return redirect('/dashboard/posts')->with('success', 'Post updated successfully');
+
     }
 
     /**
@@ -109,9 +131,10 @@ class DashboardPostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy(Post $post)
     {
-        //
+        Post::destroy($post->id);
+        return redirect('/dashboard/posts')->with('success', 'Post deleted successfully');
     }
 
     public function checkSlug(Request $request)
