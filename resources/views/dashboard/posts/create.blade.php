@@ -23,7 +23,6 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            {{-- slug --}}
                             <label for="slug">Slug</label>
                             <input type="text" name="slug" id="slug" class="form-control" placeholder="Slug">
                             @error('slug')
@@ -73,19 +72,13 @@
         const title = document.querySelector('#title');
         const slug = document.querySelector('#slug');
     
-        title.addEventListener('keyup', function(e) {
+        title.addEventListener('keyup', function() {
             slug.value = title.value.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
             
             // fetch('/dashboard/posts/checkSlug?title=' + title.value)
             //     .then(response => response.json())
-            //     .then(data => {
-            //         if (data.slug) {
-            //             slug.value = data.slug;
-            //         } else {
-            //             slug.value = title.value.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
-            //         }
-            //     })
-            //     .catch(error => console.log(error));
+            //     .then(data => slug.value = data.slug);
+
         });
         
         document.addEventListener('trix-file-accept', function(e) {

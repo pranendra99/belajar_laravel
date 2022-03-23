@@ -39,7 +39,7 @@
                 @enderror
             </div>
             <div class="form-floating">
-                <input type="password" name="password" class="form-control rounded-bottom @error('password') is-invalid @enderror" id="password" placeholder="Password">
+                <input type="password" name="password" class="form-control rounded-bottom @error('password') is-invalid @enderror" id="password" placeholder="Password" required>
                 <label for="password">Password</label>
                 @error('password')
                     <div class="invalid-feedback">
