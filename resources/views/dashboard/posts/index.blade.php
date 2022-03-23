@@ -5,6 +5,12 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
+                  @if (session()->has('success'))
+                    <div class="alert alert-success alert-dismissible col-md-6">
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        {{ session('success') }}
+                    </div>
+                  @endif
                     <a href="/dashboard/posts/create" class="btn btn-primary">
                         <i class="fa fa-plus"></i>
                         <span>Add new post</span>
