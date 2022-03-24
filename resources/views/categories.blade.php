@@ -1,12 +1,12 @@
 @extends('layouts.main')
 
 @section('content')
-    <h1 class="mb-5">Posts Category</h1>
 
-    <div class="container">
-        <div class="row">
+<div class="container">
+    <div class="row">
+            <h1 class="mb-3 text-center">Posts Category</h1>
             @foreach ($categories as $category)                
-            <div class="col-md-4">
+            <div class="col-md-4 my-3">
                 <a href="/posts?category={{ $category->slug }}">
                 <div class="card bg-dark text-white">
                     <img src="https://source.unsplash.com/500x400?{{ $category->name }}" class="card-img" alt="{{ $category->name }}">
