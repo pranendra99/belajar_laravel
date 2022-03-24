@@ -11,9 +11,9 @@
                         {{ session('success') }}
                     </div>
                   @endif
-                    <a href="/dashboard/posts/create" class="btn btn-primary">
+                    <a href="/dashboard/categories/create" class="btn btn-primary">
                         <i class="fa fa-plus"></i>
-                        <span>Add new post</span>
+                        <span>Add new category</span>
                     </a>
                 </div>
                 <!-- /.card-header -->
@@ -22,23 +22,19 @@
                     <thead>
                     <tr>
                       <th>No.</th>
-                      <th>Judul</th>
-                      <th>Kategori</th>
+                      <th>Nama Kategori</th>
                       <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach ($posts as $post)
+                    @foreach ($categories as $category)
                     <tr>
                       <td>{{ $loop->iteration }}</td>
-                      <td>{{ $post->title }}</td>
-                      <td>{{ $post->category->name }}</td>
+                      <td>{{ $category->name }}</td>
                       <td>
-                        {{-- show --}}
-                        <a href="/dashboard/posts/{{ $post->slug }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
                         {{-- edit --}}
-                        <a href="/dashboard/posts/{{ $post->slug }}/edit" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                        <form action="/dashboard/posts/{{ $post->slug }}" method="POST" class="d-inline">
+                        <a href="/dashboard/categories/{{ $category->slug }}/edit" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                        <form action="/dashboard/categories/{{ $category->slug }}" method="POST" class="d-inline">
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus data ini?')"><i class="fa fa-trash"></i></button>
@@ -50,8 +46,7 @@
                     <tfoot>
                     <tr>
                       <th>No.</th>
-                      <th>Judul</th>
-                      <th>Kategori</th>
+                      <th>Nama Kategori</th>
                       <th>Action</th>
                     </tr>
                     </tfoot>
