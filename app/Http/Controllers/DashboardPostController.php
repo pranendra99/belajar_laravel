@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use SNMP;
 use App\Models\Post;
 use App\Models\Category;
-use Illuminate\Http\Request;
-use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Support\Str;
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class DashboardPostController extends Controller
 {
@@ -52,8 +53,16 @@ class DashboardPostController extends Controller
             'title' => 'required|max:255',
             'slug' => 'required|unique:posts',
             'category_id' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'body' => 'required',
         ]);
+
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $imageName = date('YmdHis') . '-' . $image->getClientOriginalName();
+            $image->move(public_path('images'), $imageName);
+            $validasi['image'] = $imageName;
+        }
 
         $validasi['user_id'] = auth()->user()->id;
         $validasi['excerpt'] = Str::limit(strip_tags($request->body), 100);
@@ -108,6 +117,7 @@ class DashboardPostController extends Controller
         $rules = [
             'title' => 'required|max:255',
             'category_id' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'body' => 'required',
         ];
 
@@ -116,6 +126,16 @@ class DashboardPostController extends Controller
         }
         
         $validasi = $request->validate($rules);
+
+        if($request->hasFile('image')){
+            if($request->old_image){
+                unlink(public_path('/images/' . $request->old_image));
+            }
+            $image = $request->file('image');
+            $imageName = date('YmdHis') . '-' . $image->getClientOriginalName();
+            $image->move(public_path('images'), $imageName);
+            $validasi['image'] = $imageName;
+        }
 
         $validasi['user_id'] = auth()->user()->id;
         $validasi['excerpt'] = Str::limit(strip_tags($request->body), 100);
@@ -133,6 +153,9 @@ class DashboardPostController extends Controller
      */
     public function destroy(Post $post)
     {
+        if($post->image){
+            unlink(public_path('/images/' . $post->image));
+        }
         Post::destroy($post->id);
         return redirect('/dashboard/posts')->with('success', 'Post deleted successfully');
     }

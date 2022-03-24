@@ -49,13 +49,14 @@
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        {{-- <div class="form-group">
+                        <div class="form-group">
                             <label for="image">Gambar</label>
-                            <input type="file" name="image" id="image" class="form-control">
+                            <img class="img-preview img-fluid col-sm-5"/>
+                            <input type="file" name="image" id="image" class="form-control @error('image') is-invalid @enderror" onchange="previewImage()">
                             @error('image')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
-                        </div> --}}
+                        </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">
                                 <i class="fa fa-save"></i>
@@ -70,25 +71,5 @@
                 </div>
         </div>
     </div>
-
-    <script>
-        // checkSlug
-        const title = document.querySelector('#title');
-        const slug = document.querySelector('#slug');
-    
-        title.addEventListener('keyup', function() {
-            slug.value = title.value.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
-            
-            // fetch('/dashboard/posts/checkSlug?title=' + title.value)
-            //     .then(response => response.json())
-            //     .then(data => slug.value = data.slug);
-
-        });
-        
-        document.addEventListener('trix-file-accept', function(e) {
-            e.preventDefault();
-        });
-    
-    </script>
 
 @endsection
