@@ -55,7 +55,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
             <li class="nav-item">
-                <a href="/dashboard" class="nav-link {{ ($active === "dashboard") ? 'active' : '' }}">
+                <a href="/dashboard" class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>
                         Dashboard
@@ -63,7 +63,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/dashboard/posts" class="nav-link {{ $active === "posts" ? 'active' : '' }}">
+                <a href="/dashboard/posts" class="nav-link {{ Request::is('dashboard/posts*') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
                         Posts
@@ -78,11 +78,19 @@
             with font-awesome or any other icon font library -->
             <li class="nav-header">ADMINISTRATION</li>
             <li class="nav-item">
-              <a href="/dashboard/categories" class="nav-link {{ $active === "categories" ? 'active' : '' }}">
+              <a href="/dashboard/categories" class="nav-link {{ Request::is('dashboard/categories*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-bars"></i>
                 <p>
                   Post Categories
-                  </p>
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/dashboard/users" class="nav-link {{ Request::is('dashboard/users*') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-users"></i>
+                <p>
+                  Users
+                </p>
               </a>
             </li>
         </ul>

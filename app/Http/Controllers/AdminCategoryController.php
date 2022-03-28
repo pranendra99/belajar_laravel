@@ -17,7 +17,6 @@ class AdminCategoryController extends Controller
         $this->authorize('admin');
         return view('dashboard.categories.index', [
             "title" => "Categories",
-            "active" => "categories",
             "categories" => Category::all(),
         ]);
     }
@@ -31,7 +30,6 @@ class AdminCategoryController extends Controller
     {
         return view('dashboard.categories.create', [
             "title" => "Create Category",
-            "active" => "categories",
         ]);
     }
 
@@ -74,7 +72,6 @@ class AdminCategoryController extends Controller
     {
         return view('dashboard.categories.edit', [
             "title" => "Edit Category",
-            "active" => "categories",
             "category" => $category,
         ]);
     }
